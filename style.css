@@ -450,14 +450,18 @@ input:focus {
   text-decoration: underline;
 }
 
+.link:link,
+.link:visited {
+  color: var(--accent-sky);
+}
+
 /* =======================================
    Footer
 ======================================= */
 .site-footer {
-  width: 100%;
-  max-width: var(--container);
+  width: min(var(--container), calc(100% - var(--gutter)));
   margin: 0 auto;
-  padding: 12px calc(var(--gutter) / 2) 24px;
+  padding: 12px 0 24px;
   color: var(--ink-subtle);
   font-size: 13px;
 }
@@ -484,6 +488,11 @@ input:focus {
   text-decoration: underline;
   font-weight: 700;
   word-break: break-all;
+}
+
+.footer-link:link,
+.footer-link:visited {
+  color: var(--accent-sky);
 }
 
 /* =======================================
