@@ -1,5 +1,6 @@
 // DOM要素の参照をまとめて取得
 const checkButton = document.getElementById("checkClipboard");
+const readButton = document.getElementById("readClipboard");
 const overlay = document.getElementById("overlay");
 const modalBody = document.getElementById("modalBody");
 const modalTitle = document.getElementById("modalTitle");
@@ -46,6 +47,32 @@ const handlePaste = (event) => {
 checkButton?.addEventListener("click", () => {
   updateStatus("このページ上で Ctrl+V / Cmd+V を押すと読み取ります。");
 });
+
+// Clipboard API を使って貼り付けなしで読み取る（許可ダイアログが出ることがあります）
+const handleClipboardRead = async () => {
+  if (!navigator.clipboard || !navigator.clipboard.readText) {
+    updateStatus("このブラウザは Clipboard API をサポートしていません。", "error");
+    return;
+  }
+
+  updateStatus("読み取り中…（ブラウザの許可が求められる場合があります）", "warn");
+
+  try {
+    const text = await navigator.clipboard.readText();
+    buildMessage(text);
+    updateStatus("クリップボードから直接読み取りました。上のポップアップを確認してください。");
+    openModal();
+  } catch (error) {
+    if (error.name === "NotAllowedError") {
+      updateStatus("読み取りが拒否されました。サイトにクリップボードの許可を与えてください。", "error");
+    } else {
+      updateStatus("読み取りに失敗しました。もう一度お試しください。", "error");
+      console.error("Clipboard read failed", error);
+    }
+  }
+};
+
+readButton?.addEventListener("click", handleClipboardRead);
 
 document.addEventListener("paste", handlePaste);
 closeModal?.addEventListener("click", hideModal);

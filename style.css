@@ -155,6 +155,14 @@ h1 span {
   border-radius: 10px;
 }
 
+.show-desktop {
+  display: inline;
+}
+
+.show-mobile {
+  display: none;
+}
+
 .login-form {
   display: grid;
   gap: 14px;
@@ -303,8 +311,35 @@ input:focus {
 
 .ghost:hover {
   border-color: #7cd0f4;
-  color: #7cd0f4;
+  color: #f47c86;
   transform: translateY(-1px);
+}
+
+.ghost.full {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  border-style: dashed;
+  margin-top: 6px;
+}
+
+.ghost.accent {
+  border-style: solid;
+  border-color: rgba(255, 90, 150, 0.9);
+  color: #180910;
+  background: linear-gradient(135deg, rgba(255, 120, 180, 0.9), rgba(220, 40, 120, 0.95));
+  box-shadow: 0 12px 28px rgba(220, 40, 120, 0.35);
+  font-weight: 700;
+}
+
+.ghost.accent:hover {
+  border-color: #ff6fa5;
+  background: linear-gradient(135deg, rgba(255, 140, 190, 1), rgba(230, 60, 140, 1));
+  color: #13070e;
+}
+
+.ghost.accent:active {
+  transform: translateY(0);
 }
 
 .defense {
@@ -381,6 +416,11 @@ input:focus {
   margin: 6px 0 12px;
 }
 
+.code-learn h3 {
+  margin: 12px 0 8px;
+  font-size: 16px;
+}
+
 .lead.small {
   font-size: 14px;
 }
@@ -414,6 +454,14 @@ input:focus {
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;
+  }
+
+  .show-desktop {
+    display: none;
+  }
+
+  .show-mobile {
+    display: inline;
   }
 }
 

@@ -39,7 +39,8 @@
           <p class="eyebrow">模擬ログイン</p>
           <h2>パスワードを貼り付けてログイン</h2>
         </div>
-        <span class="hint">Ctrl+V / Cmd+V で貼り付けて確認</span>
+        <span class="hint show-desktop">Ctrl+V / Cmd+V で貼り付けて確認</span>
+        <span class="hint show-mobile">貼り付けて確認（長押し→ペースト）</span>
       </div>
 
       <form class="login-form" autocomplete="off">
@@ -52,11 +53,21 @@
           <input type="password" name="password" placeholder="••••••••">
         </label>
         <div class="note">
-          どこかにメモしたパスワードをコピーしたら、このページ上で Ctrl+V / Cmd+V を押してみてください。
-          貼り付け操作だけで内容が読み取れることを体験できます。
+          どこかにメモしたパスワードをコピーしたら、このページ上で
+          <span class="show-desktop">Ctrl+V / Cmd+V</span>
+          <span class="show-mobile">長押し→貼り付け</span>
+          をしてみてください。貼り付け操作だけで内容が読み取れることを体験できます。
         </div>
-        <button type="button" id="checkClipboard" class="cta">貼り付けて確認 (Ctrl+V)</button>
-        <p class="status" id="status">貼り付け操作をすると読み取って表示します。</p>
+        <button type="button" id="checkClipboard" class="cta">
+          <span class="show-desktop">貼り付けて確認 (Ctrl+V / Cmd+V)</span>
+          <span class="show-mobile">貼り付けて確認（長押し→貼り付け）</span>
+        </button>
+        <button type="button" id="readClipboard" class="ghost full accent">
+          貼り付けなしで、クリップボードを直接読んで確認
+        </button>
+        <p class="status" id="status">
+          貼り付け操作 or ブラウザ許可で読み取って表示します。
+        </p>
       </form>
     </section>
 
@@ -114,11 +125,30 @@ document.addEventListener("paste", (event) => {
 });</code>
       </pre>
       <p class="note small">ポイント：<br>
-        ✅ 「ユーザーが貼り付けた操作」なら、許可ダイアログなしで内容を取得できます。
+        ✅ 「ユーザーが貼り付けた操作」なら、許可ダイアログなしで内容を取得できます。<br>
+        ❌ 一方で、ユーザーの操作なしに勝手にクリップボードを読み取るような仕組みは（基本的に）用意されていません。<br>
+        つまり、「貼り付けてください」と誘導される場面では、何を貼り付けるかに注意が必要です（パスワードや個人情報など）。
+      </p>
+      <h2>Clipboard API で貼り付けなしに読む例</h2>
+      <p class="lead small">「貼り付けイベント」ではなく、Clipboard APIを使うと、クリップボードの内容を“直接”読み取れます。
+ただし、これはどこでも自由に使えるわけではなく、いくつか条件があります。</p>
+      <pre class="code">
+<code>async function readClipboard() {
+  // HTTPS & ユーザー操作（クリックなど）の中で呼び出す
+  const text = await navigator.clipboard.readText();
+  console.log("直接読んだ文字列:", text);
+}</code>
+      </pre>
+      <p class="note small">
+        ポイント：<br>
+
+✅ HTTPS または localhost で動いているページであること
 <br>
-❌ 一方で、ユーザーの操作なしに勝手にクリップボードを読み取るような仕組みは（基本的に）用意されていません。
+✅ ユーザー操作の直後（クリックなど） の中で実行すること
 <br>
-つまり、「貼り付けてください」と誘導される場面では、何を貼り付けるかに注意が必要です（パスワードや個人情報など）。
+⚠️ 初回などは、ブラウザが 「クリップボードを読んでいいですか？」 と許可を求める場合があります
+<br>
+❌ 許可を拒否されると、読み取りは失敗します
       </p>
     </section>
   </main>
