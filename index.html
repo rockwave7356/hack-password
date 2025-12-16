@@ -14,22 +14,26 @@
 
   <main class="page">
     <section class="hero">
-      <p class="eyebrow">コピーしたものは安全？</p>
-      <h1>パスワードをコピーすると、<br><span>誰かに見られるかも</span></h1>
-      <p class="lead">
-        多くの人が「パスワードをメモしてコピペ」しますが、クリップボードの中身はブラウザから簡単に読めます。
-        下のフォームで実際に体験してみましょう。
-      </p>
-      <div class="callouts">
+      <p class="eyebrow">「便利だから」とパスワードをコピペしていませんか？ </p>
+      <h1>そのコピー、裏で誰かが<span>「監視」しています。</span></h1>
+        <div class="callouts">
         <div class="callout">
           <span class="dot"></span>
-          コピーした文字列は、ユーザー操作だけで読み取れる。
+          コピーした文字列は、「貼り付け」だけで読み取れる。
         </div>
         <div class="callout">
           <span class="dot"></span>
           「安全そうな画面」でも油断すると漏えいの入口に。
         </div>
       </div>
+      <p class="lead">
+        多くの人が「パスワードをメモしてコピペ」しています。</p>
+      <p>クリップボードの中身は、悪意あるサイトやアプリにとって「宝の山」です。<br>
+      「貼り付け」は、情報の「送信」と同じです。
+      あなたが貼り付けた瞬間、サイト側はその内容を即座に取得・保存できます。</p>
+      <p>もしそれが偽のログインサイト（フィッシング）だったら？ <br>
+      貼り付けた瞬間に、パスワードは盗まれています。
+      送信ボタンを押さなくても、です。</p>
     </section>
 
     <section class="panel">
@@ -75,7 +79,7 @@
         <article class="defense-card">
           <span class="pill pill-safe">推奨</span>
           <h3>パスワードマネージャーを使う</h3>
-          <p>ブラウザ拡張やアプリで自動入力。クリップボードに載せないことで盗み見を防ぐ。</p>
+          <p>「コピー＆ペースト」すら不要。自動入力なら、クリップボードを経由しないため、盗み見られる隙を与えません。</p>
         </article>
         <article class="defense-card">
           <span class="pill">貼り付けを避ける</span>
@@ -94,13 +98,42 @@
         </article>
         <article class="defense-card">
           <span class="pill pill-warn">注意</span>
-          <h3>怪しいサイトや拡張を入れない</h3>
-          <p>不用意なクリックでクリップボードを読まれることも。許可ダイアログは慎重に。</p>
+          <h3>怪しい拡張機能を入れない</h3>
+          <p>ブラウザが守ってくれても、あなたがインストールした『便利なクーポン検索アプリ』や『翻訳ツール』が、裏でクリップボードを読んでいるかもしれません。</p>
         </article>
         <article class="defense-card">
           <span class="pill">クリア</span>
           <h3>定期的にクリップボードを消去</h3>
           <p>OSショートカットや専用ツールで、貼り付け後にクリップボード履歴を消しておく。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cases">
+      <p class="eyebrow">実際に起きた例</p>
+      <h2>クリップボード被害のニュースから学ぶ</h2>
+      <div class="defense-grid">
+        <article class="defense-card">
+          <span class="pill pill-warn">アプリ無断読み取り</span>
+          <h3>TikTokなどが勝手にクリップボードを読み取っていた（2020年）</h3>
+          <p>
+            iOS14で通知機能が入った際、TikTok/LinkedIn/Redditなどが数秒おきにクリップボードを覗いていたことが判明。
+            「有名アプリだから安全」とは限らないと示したケース。
+          </p>
+          <a class="link" href="https://internet.watch.impress.co.jp/docs/yajiuma/1261591.html?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">
+            INTERNET Watchの記事で詳しく見る
+          </a>
+        </article>
+        <article class="defense-card">
+          <span class="pill pill-warn">書き換えマルウェア</span>
+          <h3>仮想通貨ウォレットのアドレスがすり替えられる</h3>
+          <p>
+            送金先アドレスをコピーした瞬間、マルウェアがクリップボード内の文字列を攻撃者のアドレスに置き換える手口。
+            貼り付け前にアドレスが変わっていないか確認する習慣が重要。
+          </p>
+          <a class="link" href="https://news.livedoor.com/article/detail/18567041/" target="_blank" rel="noopener noreferrer">
+            Livedoorニュースの記事で詳しく見る
+          </a>
         </article>
       </div>
     </section>
@@ -145,6 +178,15 @@ document.addEventListener("paste", (event) => {
       </p>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-label">このサイトの作者のnote</span>
+      <a class="footer-link" href="https://note.com/rockwave7356" target="_blank" rel="noopener noreferrer">
+        https://note.com/rockwave7356
+      </a>
+    </div>
+  </footer>
 
   <div class="overlay" id="overlay">
     <div class="modal">
