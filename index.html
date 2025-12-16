@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="background-texture"></div>
   <header class="site-header">
     <div class="logo">HACK AWARE</div>
     <div class="badge">啓蒙デモ</div>
@@ -39,8 +38,6 @@
           <p class="eyebrow">模擬ログイン</p>
           <h2>パスワードを貼り付けてログイン</h2>
         </div>
-        <span class="hint show-desktop">Ctrl+V / Cmd+V で貼り付けて確認</span>
-        <span class="hint show-mobile">貼り付けて確認（長押し→ペースト）</span>
       </div>
 
       <form class="login-form" autocomplete="off">
@@ -58,12 +55,12 @@
           <span class="show-mobile">長押し→貼り付け</span>
           をしてみてください。貼り付け操作だけで内容が読み取れることを体験できます。
         </div>
+        <button type="button" id="readClipboard" class="ghost full accent">
+          貼り付けなしで、クリップボードを直接読んで確認
+        </button>
         <button type="button" id="checkClipboard" class="cta">
           <span class="show-desktop">貼り付けて確認 (Ctrl+V / Cmd+V)</span>
           <span class="show-mobile">貼り付けて確認（長押し→貼り付け）</span>
-        </button>
-        <button type="button" id="readClipboard" class="ghost full accent">
-          貼り付けなしで、クリップボードを直接読んで確認
         </button>
         <p class="status" id="status">
           貼り付け操作 or ブラウザ許可で読み取って表示します。
@@ -116,14 +113,12 @@
 <br>
 下のコードは、貼り付け（Ctrl+V / 右クリック貼り付け）を検知して、貼り付けられたテキストを取り出し、コンソールに表示する最小の例です。
       </p>
-      <pre class="code">
-<code>// 貼り付けイベントを監視
+      <div class="code-block"><code class="language-js">// 貼り付けイベントを監視
 document.addEventListener("paste", (event) => {
   // ユーザーが貼り付けた文字列を取得
   const text = event.clipboardData?.getData("text") || "";
   console.log("貼り付けられた文字列:", text);
-});</code>
-      </pre>
+});</code></div>
       <p class="note small">ポイント：<br>
         ✅ 「ユーザーが貼り付けた操作」なら、許可ダイアログなしで内容を取得できます。<br>
         ❌ 一方で、ユーザーの操作なしに勝手にクリップボードを読み取るような仕組みは（基本的に）用意されていません。<br>
@@ -132,13 +127,11 @@ document.addEventListener("paste", (event) => {
       <h2>Clipboard API で貼り付けなしに読む例</h2>
       <p class="lead small">「貼り付けイベント」ではなく、Clipboard APIを使うと、クリップボードの内容を“直接”読み取れます。
 ただし、これはどこでも自由に使えるわけではなく、いくつか条件があります。</p>
-      <pre class="code">
-<code>async function readClipboard() {
+      <div class="code-block"><code class="language-js">async function readClipboard() {
   // HTTPS & ユーザー操作（クリックなど）の中で呼び出す
   const text = await navigator.clipboard.readText();
   console.log("直接読んだ文字列:", text);
-}</code>
-      </pre>
+}</code></div>
       <p class="note small">
         ポイント：<br>
 
