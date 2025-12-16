@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clipboard Hack Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="background-texture"></div>
+  <header class="site-header">
+    <div class="logo">HACK AWARE</div>
+    <div class="badge">啓蒙デモ</div>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">コピーしたものは安全？</p>
+      <h1>パスワードをコピーすると、<br><span>誰かに見られるかも</span></h1>
+      <p class="lead">
+        多くの人が「パスワードをメモしてコピペ」しますが、クリップボードの中身はブラウザから簡単に読めます。
+        下のフォームで実際に体験してみましょう。
+      </p>
+      <div class="callouts">
+        <div class="callout">
+          <span class="dot"></span>
+          コピーした文字列は、ユーザー操作だけで読み取れる。
+        </div>
+        <div class="callout">
+          <span class="dot"></span>
+          「安全そうな画面」でも油断すると漏えいの入口に。
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <p class="eyebrow">模擬ログイン</p>
+          <h2>パスワードを貼り付けてログイン</h2>
+        </div>
+        <span class="hint">Ctrl+V / Cmd+V で貼り付けて確認</span>
+      </div>
+
+      <form class="login-form" autocomplete="off">
+        <label class="field">
+          <span>メールアドレス</span>
+          <input type="email" name="email" placeholder="you@example.com" value="passwordbarenai@example.com">
+        </label>
+        <label class="field">
+          <span>パスワード</span>
+          <input type="password" name="password" placeholder="••••••••">
+        </label>
+        <div class="note">
+          どこかにメモしたパスワードをコピーしたら、このページ上で Ctrl+V / Cmd+V を押してみてください。
+          貼り付け操作だけで内容が読み取れることを体験できます。
+        </div>
+        <button type="button" id="checkClipboard" class="cta">貼り付けて確認 (Ctrl+V)</button>
+        <p class="status" id="status">貼り付け操作をすると読み取って表示します。</p>
+      </form>
+    </section>
+
+    <section class="defense">
+      <p class="eyebrow">読み取られないために</p>
+      <h2>いますぐ試せる6つの対策</h2>
+      <div class="defense-grid">
+        <article class="defense-card">
+          <span class="pill pill-safe">推奨</span>
+          <h3>パスワードマネージャーを使う</h3>
+          <p>ブラウザ拡張やアプリで自動入力。クリップボードに載せないことで盗み見を防ぐ。</p>
+        </article>
+        <article class="defense-card">
+          <span class="pill">貼り付けを避ける</span>
+          <h3>手入力か自動入力で</h3>
+          <p>どうしてもコピペする場合は、入力後に別の無害なテキストをコピーして上書きする。</p>
+        </article>
+        <article class="defense-card">
+          <span class="pill">多要素</span>
+          <h3>2段階認証を必ず設定</h3>
+          <p>万が一パスワードが漏れても、追加要素が攻撃を止める。</p>
+        </article>
+        <article class="defense-card">
+          <span class="pill">端末</span>
+          <h3>共有PCでのログインを避ける</h3>
+          <p>見知らぬ端末・公共端末では特にコピペ厳禁。使ったらログアウトとキャッシュ削除。</p>
+        </article>
+        <article class="defense-card">
+          <span class="pill pill-warn">注意</span>
+          <h3>怪しいサイトや拡張を入れない</h3>
+          <p>不用意なクリックでクリップボードを読まれることも。許可ダイアログは慎重に。</p>
+        </article>
+        <article class="defense-card">
+          <span class="pill">クリア</span>
+          <h3>定期的にクリップボードを消去</h3>
+          <p>OSショートカットや専用ツールで、貼り付け後にクリップボード履歴を消しておく。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="code-learn">
+      <p class="eyebrow">コードで学ぶ</p>
+      <h2>貼り付けイベントで文字列を読むシンプルな例</h2>
+      <p class="lead small">
+        JavaScriptでクリップボードの文字列を読む方法はいくつかありますが、許可ダイアログなしで読めるのは「ユーザーが自分で貼り付けた瞬間」だけです。
+<br>
+下のコードは、貼り付け（Ctrl+V / 右クリック貼り付け）を検知して、貼り付けられたテキストを取り出し、コンソールに表示する最小の例です。
+      </p>
+      <pre class="code">
+<code>// 貼り付けイベントを監視
+document.addEventListener("paste", (event) => {
+  // ユーザーが貼り付けた文字列を取得
+  const text = event.clipboardData?.getData("text") || "";
+  console.log("貼り付けられた文字列:", text);
+});</code>
+      </pre>
+      <p class="note small">ポイント：<br>
+        ✅ 「ユーザーが貼り付けた操作」なら、許可ダイアログなしで内容を取得できます。
+<br>
+❌ 一方で、ユーザーの操作なしに勝手にクリップボードを読み取るような仕組みは（基本的に）用意されていません。
+<br>
+つまり、「貼り付けてください」と誘導される場面では、何を貼り付けるかに注意が必要です（パスワードや個人情報など）。
+      </p>
+    </section>
+  </main>
+
+  <div class="overlay" id="overlay">
+    <div class="modal">
+      <p class="modal-eyebrow">クリップボードを読み取りました</p>
+      <h3 id="modalTitle">あなたのパスワードは…？</h3>
+      <p class="modal-body" id="modalBody"></p>
+      <p class="modal-warning">コピーした値は、クリックひとつで読まれる可能性があります。</p>
+      <ul class="modal-tips">
+        <li>パスワードマネージャーの自動入力で、コピペを避ける</li>
+        <li>貼り付けたら別の文字列をすぐコピーして上書きする</li>
+        <li>2段階認証を必ず設定し、怪しいサイトや拡張機能を入れない</li>
+      </ul>
+      <div class="modal-actions">
+        <button id="closeModal" class="ghost">閉じる</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
