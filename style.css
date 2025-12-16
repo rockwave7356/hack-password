@@ -6,6 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Avenir Next", "Fira Sans", "Segoe UI", system-ui, sans-serif;
+  font-size: 16px;
   background: radial-gradient(circle at 20% 20%, #193341 0%, transparent 40%),
     radial-gradient(circle at 80% 0%, #0a1721 0%, transparent 35%),
     linear-gradient(135deg, #0e1a22 0%, #0a1016 100%);
@@ -462,6 +463,45 @@ input:focus {
 
   .show-mobile {
     display: inline;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 17px;
+  }
+
+  h1 {
+    font-size: clamp(24px, 7vw, 32px);
+    line-height: 1.25;
+  }
+
+  .lead {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .panel {
+    padding: 16px 16px 18px;
+  }
+
+  input {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .cta {
+    font-size: 16px;
+    padding: 14px;
+  }
+
+  .ghost.full {
+    font-size: 15px;
+  }
+
+  .callout,
+  .note {
+    font-size: 15px;
   }
 }
 
