@@ -1,0 +1,59 @@
+<section class="hero">
+  <p class="eyebrow">「便利だから」とパスワードをコピペしていませんか？ </p>
+  <h1>そのコピー、裏で誰かが<span>「監視」しています。</span></h1>
+  <div class="callouts">
+    <div class="callout">
+      <span class="dot"></span>
+      コピーした文字列は、「貼り付け」だけで読み取れる。
+    </div>
+    <div class="callout">
+      <span class="dot"></span>
+      「安全そうな画面」でも油断すると漏えいの入口に。
+    </div>
+  </div>
+  <p class="lead">
+    多くの人が「パスワードをメモしてコピペ」しています。
+  </p>
+  <p>クリップボードの中身は、悪意あるサイトやアプリにとって「宝の山」です。<br>
+    「貼り付け」は、情報の「送信」と同じです。
+    あなたが貼り付けた瞬間、サイト側はその内容を即座に取得・保存できます。</p>
+  <p>もしそれが偽のログインサイト（フィッシング）だったら？ <br>
+    貼り付けた瞬間に、パスワードは盗まれています。
+    送信ボタンを押さなくても、です。</p>
+</section>
+
+<section class="panel">
+  <div class="panel-header">
+    <div>
+      <p class="eyebrow">模擬ログイン</p>
+      <h2>パスワードを貼り付けてログイン</h2>
+    </div>
+  </div>
+
+  <form class="login-form" autocomplete="off">
+    <label class="field">
+      <span>メールアドレス</span>
+      <input type="email" name="email" placeholder="you@example.com" value="passwordbarenai@example.com">
+    </label>
+    <label class="field">
+      <span>パスワード</span>
+      <input type="password" name="password" placeholder="••••••••">
+    </label>
+    <div class="note">
+      どこかにメモしたパスワードをコピーしたら、このページ上で
+      <span class="show-desktop">Ctrl+V / Cmd+V</span>
+      <span class="show-mobile">長押し→貼り付け</span>
+      をしてみてください。貼り付け操作だけで内容が読み取れることを体験できます。
+    </div>
+    <button type="button" id="readClipboard" class="ghost full accent">
+      貼り付けなしで、クリップボードを直接読んで確認
+    </button>
+    <button type="button" id="checkClipboard" class="cta">
+      <span class="show-desktop">貼り付けて確認 (Ctrl+V / Cmd+V)</span>
+      <span class="show-mobile">貼り付けて確認（長押し→貼り付け）</span>
+    </button>
+    <p class="status" id="status">
+      貼り付け操作 or ブラウザ許可で読み取って表示します。
+    </p>
+  </form>
+</section>

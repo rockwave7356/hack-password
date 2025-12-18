@@ -7,176 +7,17 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="background-texture"></div>
   <header class="site-header">
     <div class="logo">HACK AWARE</div>
-    <div class="badge">啓蒙デモ</div>
+    <div class="badge">パスワード漏洩啓蒙</div>
   </header>
 
   <main class="page">
-    <section class="hero">
-      <p class="eyebrow">「便利だから」とパスワードをコピペしていませんか？ </p>
-      <h1>そのコピー、裏で誰かが<span>「監視」しています。</span></h1>
-        <div class="callouts">
-        <div class="callout">
-          <span class="dot"></span>
-          コピーした文字列は、「貼り付け」だけで読み取れる。
-        </div>
-        <div class="callout">
-          <span class="dot"></span>
-          「安全そうな画面」でも油断すると漏えいの入口に。
-        </div>
-      </div>
-      <p class="lead">
-        多くの人が「パスワードをメモしてコピペ」しています。</p>
-      <p>クリップボードの中身は、悪意あるサイトやアプリにとって「宝の山」です。<br>
-      「貼り付け」は、情報の「送信」と同じです。
-      あなたが貼り付けた瞬間、サイト側はその内容を即座に取得・保存できます。</p>
-      <p>もしそれが偽のログインサイト（フィッシング）だったら？ <br>
-      貼り付けた瞬間に、パスワードは盗まれています。
-      送信ボタンを押さなくても、です。</p>
-    </section>
-
-    <section class="panel">
-      <div class="panel-header">
-        <div>
-          <p class="eyebrow">模擬ログイン</p>
-          <h2>パスワードを貼り付けてログイン</h2>
-        </div>
-      </div>
-
-      <form class="login-form" autocomplete="off">
-        <label class="field">
-          <span>メールアドレス</span>
-          <input type="email" name="email" placeholder="you@example.com" value="passwordbarenai@example.com">
-        </label>
-        <label class="field">
-          <span>パスワード</span>
-          <input type="password" name="password" placeholder="••••••••">
-        </label>
-        <div class="note">
-          どこかにメモしたパスワードをコピーしたら、このページ上で
-          <span class="show-desktop">Ctrl+V / Cmd+V</span>
-          <span class="show-mobile">長押し→貼り付け</span>
-          をしてみてください。貼り付け操作だけで内容が読み取れることを体験できます。
-        </div>
-        <button type="button" id="readClipboard" class="ghost full accent">
-          貼り付けなしで、クリップボードを直接読んで確認
-        </button>
-        <button type="button" id="checkClipboard" class="cta">
-          <span class="show-desktop">貼り付けて確認 (Ctrl+V / Cmd+V)</span>
-          <span class="show-mobile">貼り付けて確認（長押し→貼り付け）</span>
-        </button>
-        <p class="status" id="status">
-          貼り付け操作 or ブラウザ許可で読み取って表示します。
-        </p>
-      </form>
-    </section>
-
-    <section class="defense">
-      <p class="eyebrow">読み取られないために</p>
-      <h2>いますぐ試せる6つの対策</h2>
-      <div class="defense-grid">
-        <article class="defense-card">
-          <span class="pill pill-safe">推奨</span>
-          <h3>パスワードマネージャーを使う</h3>
-          <p>「コピー＆ペースト」すら不要。自動入力なら、クリップボードを経由しないため、盗み見られる隙を与えません。</p>
-        </article>
-        <article class="defense-card">
-          <span class="pill">貼り付けを避ける</span>
-          <h3>手入力か自動入力で</h3>
-          <p>どうしてもコピペする場合は、入力後に別の無害なテキストをコピーして上書きする。</p>
-        </article>
-        <article class="defense-card">
-          <span class="pill">多要素</span>
-          <h3>2段階認証を必ず設定</h3>
-          <p>万が一パスワードが漏れても、追加要素が攻撃を止める。</p>
-        </article>
-        <article class="defense-card">
-          <span class="pill">端末</span>
-          <h3>共有PCでのログインを避ける</h3>
-          <p>見知らぬ端末・公共端末では特にコピペ厳禁。使ったらログアウトとキャッシュ削除。</p>
-        </article>
-        <article class="defense-card">
-          <span class="pill pill-warn">注意</span>
-          <h3>怪しい拡張機能を入れない</h3>
-          <p>ブラウザが守ってくれても、あなたがインストールした『便利なクーポン検索アプリ』や『翻訳ツール』が、裏でクリップボードを読んでいるかもしれません。</p>
-        </article>
-        <article class="defense-card">
-          <span class="pill">クリア</span>
-          <h3>定期的にクリップボードを消去</h3>
-          <p>OSショートカットや専用ツールで、貼り付け後にクリップボード履歴を消しておく。</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="cases">
-      <p class="eyebrow">実際に起きた例</p>
-      <h2>クリップボード被害のニュースから学ぶ</h2>
-      <div class="defense-grid">
-        <article class="defense-card">
-          <span class="pill pill-warn">アプリ無断読み取り</span>
-          <h3>TikTokなどが勝手にクリップボードを読み取っていた（2020年）</h3>
-          <p>
-            iOS14で通知機能が入った際、TikTok/LinkedIn/Redditなどが数秒おきにクリップボードを覗いていたことが判明。
-            「有名アプリだから安全」とは限らないと示したケース。
-          </p>
-          <a class="link" href="https://internet.watch.impress.co.jp/docs/yajiuma/1261591.html?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">
-            INTERNET Watchの記事で詳しく見る
-          </a>
-        </article>
-        <article class="defense-card">
-          <span class="pill pill-warn">書き換えマルウェア</span>
-          <h3>仮想通貨ウォレットのアドレスがすり替えられる</h3>
-          <p>
-            送金先アドレスをコピーした瞬間、マルウェアがクリップボード内の文字列を攻撃者のアドレスに置き換える手口。
-            貼り付け前にアドレスが変わっていないか確認する習慣が重要。
-          </p>
-          <a class="link" href="https://news.livedoor.com/article/detail/18567041/" target="_blank" rel="noopener noreferrer">
-            Livedoorニュースの記事で詳しく見る
-          </a>
-        </article>
-      </div>
-    </section>
-
-    <section class="code-learn">
-      <p class="eyebrow">コードで学ぶ</p>
-      <h2>貼り付けイベントで文字列を読むシンプルな例</h2>
-      <p class="lead small">
-        JavaScriptでクリップボードの文字列を読む方法はいくつかありますが、許可ダイアログなしで読めるのは「ユーザーが自分で貼り付けた瞬間」だけです。
-<br>
-下のコードは、貼り付け（Ctrl+V / 右クリック貼り付け）を検知して、貼り付けられたテキストを取り出し、コンソールに表示する最小の例です。
-      </p>
-      <div class="code-block"><code class="language-js">// 貼り付けイベントを監視
-document.addEventListener("paste", (event) => {
-  // ユーザーが貼り付けた文字列を取得
-  const text = event.clipboardData?.getData("text") || "";
-  console.log("貼り付けられた文字列:", text);
-});</code></div>
-      <p class="note small">ポイント：<br>
-        ✅ 「ユーザーが貼り付けた操作」なら、許可ダイアログなしで内容を取得できます。<br>
-        ❌ 一方で、ユーザーの操作なしに勝手にクリップボードを読み取るような仕組みは（基本的に）用意されていません。<br>
-        つまり、「貼り付けてください」と誘導される場面では、何を貼り付けるかに注意が必要です（パスワードや個人情報など）。
-      </p>
-      <h2>Clipboard API で貼り付けなしに読む例</h2>
-      <p class="lead small">「貼り付けイベント」ではなく、Clipboard APIを使うと、クリップボードの内容を“直接”読み取れます。
-ただし、これはどこでも自由に使えるわけではなく、いくつか条件があります。</p>
-      <div class="code-block"><code class="language-js">async function readClipboard() {
-  // HTTPS & ユーザー操作（クリックなど）の中で呼び出す
-  const text = await navigator.clipboard.readText();
-  console.log("直接読んだ文字列:", text);
-}</code></div>
-      <p class="note small">
-        ポイント：<br>
-
-✅ HTTPS または localhost で動いているページであること
-<br>
-✅ ユーザー操作の直後（クリックなど） の中で実行すること
-<br>
-⚠️ 初回などは、ブラウザが 「クリップボードを読んでいいですか？」 と許可を求める場合があります
-<br>
-❌ 許可を拒否されると、読み取りは失敗します
-      </p>
-    </section>
+    <div data-include="partials/hero-panel.html"></div>
+    <div data-include="partials/defense.html"></div>
+    <div data-include="partials/cases.html"></div>
+    <div data-include="partials/code-learn.html"></div>
   </main>
 
   <footer class="site-footer">
@@ -206,6 +47,6 @@ document.addEventListener("paste", (event) => {
     </div>
   </div>
 
-  <script src="app.js"></script>
+  <script type="module" src="app.js"></script>
 </body>
 </html>

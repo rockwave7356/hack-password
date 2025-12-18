@@ -1,0 +1,35 @@
+<section class="code-learn">
+  <p class="eyebrow">コードで学ぶ</p>
+  <h2>貼り付けイベントで文字列を読むシンプルな例</h2>
+  <p class="lead small">
+    JavaScriptでクリップボードの文字列を読む方法はいくつかありますが、許可ダイアログなしで読めるのは「ユーザーが自分で貼り付けた瞬間」だけです。
+    <br>
+    下のコードは、貼り付け（Ctrl+V / 右クリック貼り付け）を検知して、貼り付けられたテキストを取り出し、コンソールに表示する最小の例です。
+  </p>
+  <div class="code-block"><code class="language-js">// 貼り付けイベントを監視
+document.addEventListener("paste", (event) => {
+  // ユーザーが貼り付けた文字列を取得
+  const text = event.clipboardData?.getData("text") || "";
+  console.log("貼り付けられた文字列:", text);
+});</code></div>
+  <p class="note small">ポイント：<br>
+    ✅ 「ユーザーが貼り付けた操作」なら、許可ダイアログなしで内容を取得できます。<br>
+    ❌ 一方で、ユーザーの操作なしに勝手にクリップボードを読み取るような仕組みは（基本的に）用意されていません。<br>
+    つまり、「貼り付けてください」と誘導される場面では、何を貼り付けるかに注意が必要です（パスワードや個人情報など）。
+  </p>
+  <h2>Clipboard API で貼り付けなしに読む例</h2>
+  <p class="lead small">「貼り付けイベント」ではなく、Clipboard APIを使うと、クリップボードの内容を“直接”読み取れます。
+    ただし、これはどこでも自由に使えるわけではなく、いくつか条件があります。</p>
+  <div class="code-block"><code class="language-js">async function readClipboard() {
+  // HTTPS & ユーザー操作（クリックなど）の中で呼び出す
+  const text = await navigator.clipboard.readText();
+  console.log("直接読んだ文字列:", text);
+}</code></div>
+  <p class="note small">
+    ポイント：<br>
+    ✅ HTTPS または localhost で動いているページであること<br>
+    ✅ ユーザー操作の直後（クリックなど）の中で実行すること<br>
+    ⚠️ 初回などは、ブラウザが「クリップボードを読んでいいですか？」と許可を求める場合があります<br>
+    ❌ 許可を拒否されると、読み取りは失敗します
+  </p>
+</section>

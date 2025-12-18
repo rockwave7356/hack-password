@@ -1,0 +1,117 @@
+/* Layout & hero */
+.background-texture {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(120deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 60%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 8px);
+  z-index: 0;
+}
+
+.site-header {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 20px calc(var(--gutter) / 2) 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.logo {
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  font-size: 14px;
+  color: #8ee6ff;
+  border: 1px solid rgba(142, 230, 255, 0.3);
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(11, 23, 32, 0.6);
+}
+
+.badge {
+  background: rgba(255, 166, 0, 0.12);
+  color: #f9b14a;
+  border: 1px solid rgba(249, 177, 74, 0.35);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 20px calc(var(--gutter) / 2) 48px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-areas:
+    "hero"
+    "panel"
+    "defense"
+    "code"
+    "cases";
+  gap: 28px;
+  align-items: start;
+}
+
+.hero {
+  max-width: 640px;
+  grid-area: hero;
+}
+
+.eyebrow {
+  color: var(--accent-sky);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 8px;
+}
+
+h1 {
+  margin: 0 0 12px;
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.2;
+}
+
+h1 span {
+  color: var(--accent-gold);
+}
+
+.lead {
+  margin: 0 0 18px;
+  color: var(--ink-muted);
+  line-height: 1.6;
+}
+
+.callouts {
+  display: grid;
+  gap: 12px;
+}
+
+.callout {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-faint);
+  border-radius: 12px;
+  color: #d8e4ea;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffb75e, #ed6a5a);
+  box-shadow: 0 0 12px rgba(237, 106, 90, 0.6);
+}

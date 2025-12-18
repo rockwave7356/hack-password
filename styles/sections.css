@@ -1,0 +1,126 @@
+/* Content sections */
+.defense,
+.code-learn,
+.cases {
+  grid-column: 1 / -1;
+  background: var(--panel-soft);
+  border: 1px solid var(--border-faint);
+  border-radius: 16px;
+  padding: 18px 20px 22px;
+}
+
+.defense {
+  grid-area: defense;
+}
+
+.cases {
+  grid-area: cases;
+}
+
+.code-learn {
+  grid-area: code;
+}
+
+.defense h2,
+.code-learn h2,
+.cases h2 {
+  margin: 6px 0 12px;
+}
+
+.defense-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.defense-card {
+  background: rgba(12, 22, 30, 0.72);
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  padding: 14px 14px 16px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+
+.defense-card h3 {
+  margin: 6px 0 8px;
+  font-size: 18px;
+}
+
+.cases .defense-card h3 {
+  font-size: 17px;
+}
+
+.defense-card p {
+  margin: 0;
+  color: #cfdbe1;
+  line-height: 1.5;
+}
+
+.pill {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(124, 208, 244, 0.12);
+  color: var(--accent-sky);
+  border: 1px solid rgba(124, 208, 244, 0.4);
+  text-transform: uppercase;
+}
+
+.pill-safe {
+  background: rgba(129, 230, 217, 0.12);
+  color: #81e6d9;
+  border-color: rgba(129, 230, 217, 0.4);
+}
+
+.pill-warn {
+  background: rgba(240, 192, 103, 0.14);
+  color: var(--accent-warn);
+  border-color: rgba(240, 192, 103, 0.5);
+}
+
+.code-learn h3 {
+  margin: 12px 0 8px;
+  font-size: 16px;
+}
+
+.lead.small {
+  font-size: 14px;
+}
+
+.note.small {
+  font-size: 13px;
+  margin-top: 12px;
+}
+
+.code-block {
+  background: rgba(6, 12, 18, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 12px;
+  overflow-x: auto;
+  line-height: 1.4;
+  color: #d8e4ea;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+  font-size: 14px;
+  tab-size: 2;
+}
+
+.code-block code {
+  display: block;
+  font-family: "Fira Code", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  white-space: pre;
+}
+
+.link {
+  color: var(--accent-sky);
+  display: inline-block;
+  margin-top: 8px;
+  text-decoration: underline;
+}
+
+.link:link,
+.link:visited {
+  color: var(--accent-sky);
+}
