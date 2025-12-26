@@ -34,7 +34,7 @@ const buildMessage = (clipboardText) => {
   }
 
   state.modalTitle.textContent = `あなたのパスワードは…${truncate(cleaned)}ですか？`;
-  state.modalBody.textContent = `「${truncate(cleaned)}」という文字列を読み取りました。貼り付け操作だけで、こんなふうに中身が見えてしまいます。`;
+  state.modalBody.textContent = `「${truncate(cleaned)}」という文字列を読み取りました。貼り付け操作だけで、こんなふうに中身が見えてしまいます。このサイトでは取得した内容をどこかに送信するコードは無いので安心してください。`;
 };
 
 const handlePaste = (event) => {
